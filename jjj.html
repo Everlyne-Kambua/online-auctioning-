@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidder Notification</title>
+    <!-- Add any CSS styling if needed -->
+    <style>
+        /* Example CSS styling */
+        
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .notification {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <?php
+// Assuming you have a mechanism to retrieve the number of bidders, let's say it's stored in a variable $num_bidders
+$num_bidders = 5; // Example value, you should retrieve this from your database or any other source
+
+// Generate notification messages based on the number of bidders
+if ($num_bidders == 0) {
+    echo "<div class='notification'>No new bidders have tried to bid.</div>";
+} elseif ($num_bidders == 1) {
+    echo "<div class='notification'>1 new bidder has tried to bid.</div>";
+} else {
+    echo "<div class='notification'>$num_bidders new bidders have tried to bid.</div>";
+}
+?>
+
+</body>
+
+</html>

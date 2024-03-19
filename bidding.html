@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Description</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(250, 128, 47);
+        }
+        
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        
+        .product-image {
+            flex: 1;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .product-details {
+            flex: 1;
+            padding-left: 20px;
+        }
+        
+        .product-details h2 {
+            margin-top: 0;
+        }
+        
+        .bid-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="product-image">
+            <img src="https://townsquare.media/site/472/files/2016/07/cell-phone-Oleksiy-Mark.jpg" alt="Product Image" width="300">
+        </div>
+        <div class="product-details">
+            <h2>Product Description</h2>
+            <p><strong>Product Name:</strong> phone</p>
+            <p><strong>Description:</strong>oppo A15</p>
+            <p><strong>Item Number:</strong> 123456</p>
+            <p><strong>Category:</strong> phone</p>
+            <p><strong>Date Added:</strong> February 25, 2024</p>
+            <form id="bidForm">
+                <label for="bidAmount">Enter Bid Amount:</label>
+                <input type="number" id="bidAmount" name="bidAmount" required>
+                <button type="submit">Click to Bid</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('bidForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let bidAmount = document.getElementById('bidAmount').value;
+
+            fetch('place_bid.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: 'bidAmount=' + bidAmount
+                })
+                .then(response => response.text())
+                .then(data => {
+                    alert(data); // Display response message
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>
